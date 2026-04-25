@@ -1667,7 +1667,7 @@ window.sendBulkSMS = sendBulkSMS;
 
 
 window.onload = () => {
-  const video = document.getElementById("cam1");
+  const video = document.getElementById("cam-03");
 
   const canvas = document.createElement("canvas");
   const ctx = canvas.getContext("2d");
