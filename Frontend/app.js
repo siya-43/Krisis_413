@@ -1662,4 +1662,35 @@ async function sendBulkSMS(phones) {
 }
 window.sendBulkSMS = sendBulkSMS;
 
+
+
+
+
+window.onload = () => {
+  const video = document.getElementById("cam1");
+
+  const canvas = document.createElement("canvas");
+  const ctx = canvas.getContext("2d");
+
+  setInterval(() => {
+    canvas.width = 320;
+    canvas.height = 240;
+
+    ctx.drawImage(video, 0, 0, 320, 240);
+
+    canvas.toBlob(async (blob) => {
+      const formData = new FormData();
+      formData.append("file", blob, "frame.jpg");
+
+      const res = await fetch("http://127.0.0.1:8000/detect", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await res.json();
+      console.log("Detection:", data);
+    });
+  }, 4000);
+};
+
 init();
