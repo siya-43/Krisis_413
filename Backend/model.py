@@ -1,7 +1,7 @@
 from ultralytics import YOLO
 
 # Load model once (VERY IMPORTANT)
-model = YOLO("weights/best.pt")  # your trained model
+model = YOLO("best.pt")  # your trained model
 
 def detect_objects(image):
     results = model(image)
